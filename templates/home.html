@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block todo %}
+<!-- <div class="container">
+  <form action="/home" method="post">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Title</label>
+        <input type="text" name="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Description</label>
+        <input type="text" name="desc" class="form-control" id="exampleInputPassword1" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div> -->
+<div class="container mt-4">
+  <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">SNO</th>
+          <th scope="col">Title</th>
+          <th scope="col">Description</th>
+          <th scope="col" class="d-none d-sm-block border-bottom-0">Created At</th>
+          <th scope="col">Operations</th>
+        </tr>
+      </thead>
+      <tbody class="border border-light">
+        <!-- {% if user %}   -->
+        <!-- {% for row in user.todos %}
+            <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td>{{row.title}}</td>
+            <td>{{row.desc}}</td>
+            <td class="d-none d-sm-block border-bottom-0">{{row.CreatedAt.strftime('%Y-%m-%d')}}</td>
+            <td>
+              <a href="/update/{{row.sno}}" type="button" class="btn btn-info btn-sm mb-2">Update</a>
+              <a href="/delete/{{row.sno}}" type="button" class="btn btn-danger btn-sm mb-2">Delete</a>
+            </td>
+          </tr>
+        {% endfor %}
+        {% endif %} -->
+
+        <div>
+          Upload Video
+          <form action="/upload" method="post"  enctype="multipart/form-data">
+            <input type="file" name="file" accept="/video/*" id="file" class="form-control" required>
+            <button type="submit" class="btn btn-primary mt-2">Submit</button>
+        </div>
+
+        <div>
+
+          <table>
+            <tr>
+                <td style="vertical-align:top;">
+                    <iframe width="1280" height="720" src="https://www.videoindexer.ai/embed/player/c7ae81e6-9046-49b0-8524-cc8a56ed622a/{id}/?accessToken=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJWZXJzaW9uIjoiMi4wLjAuMCIsIktleVZlcnNpb24iOiI3ZmJkMDkxOGRmMWM0NGNjYTI3ZTA2NGQyYWZkYWViOSIsIkFjY291bnRJZCI6ImM3YWU4MWU2LTkwNDYtNDliMC04NTI0LWNjOGE1NmVkNjIyYSIsIkFjY291bnRUeXBlIjoiVHJpYWwiLCJWaWRlb0lkIjoieWFkbmV0YTA2YiIsIlBlcm1pc3Npb24iOiJSZWFkZXIiLCJFeHRlcm5hbFVzZXJJZCI6IjMxRjc3MEFGRTlGRjRGMEJBRUNDQzU4RjlBOUU3MUU3IiwiVXNlclR5cGUiOiJNaWNyb3NvZnRDb3JwQWFkIiwiSXNzdWVyTG9jYXRpb24iOiJUcmlhbCIsIm5iZiI6MTczMTQ5NzU0NywiZXhwIjoxNzMxNTAxNDQ3LCJpc3MiOiJodHRwczovL2FwaS52aWRlb2luZGV4ZXIuYWkvIiwiYXVkIjoiaHR0cHM6Ly9hcGkudmlkZW9pbmRleGVyLmFpLyJ9.RdpDTEwrVdeOv9hf6XNwftnKoV-VenRixufNHV35Mi4Zc0BMkUqU_TcsBBFK3C_75mSR_-tdYTGX5zguSZfo-0Kpate9cihVR3HemrqpNwcjvSGt8ccjxbLcwtssDSCbzDX8k4tns-SYO38Osa6ENxjYt0uY1bY0NOZsCUMzCEPOGmg_Zelh8PyTGFK3cVLrwUbdm385zY9OsZA-uSEr5uQV7kw2A4TLdHpxIFUyGjirLoL--h0RXfLP-It8vco_AtlcQnR-gv4x527yYPQc-2gTX7tlVPYfyN_3MxXwxEiw5KKgemvn6dOgs4PCElgcNo-8FcTC7HT_wkZjuMRb2A&locale=en&location=trial" frameborder="0" allowfullscreen></iframe>
+                   
+                </td>
+                <td style="vertical-align:top;">
+                    <iframe width="580" height="780" src="https://www.videoindexer.ai/embed/insights/c7ae81e6-9046-49b0-8524-cc8a56ed622a/{id}/?accessToken=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJWZXJzaW9uIjoiMi4wLjAuMCIsIktleVZlcnNpb24iOiI3ZmJkMDkxOGRmMWM0NGNjYTI3ZTA2NGQyYWZkYWViOSIsIkFjY291bnRJZCI6ImM3YWU4MWU2LTkwNDYtNDliMC04NTI0LWNjOGE1NmVkNjIyYSIsIkFjY291bnRUeXBlIjoiVHJpYWwiLCJWaWRlb0lkIjoieWFkbmV0YTA2YiIsIlBlcm1pc3Npb24iOiJSZWFkZXIiLCJFeHRlcm5hbFVzZXJJZCI6IjMxRjc3MEFGRTlGRjRGMEJBRUNDQzU4RjlBOUU3MUU3IiwiVXNlclR5cGUiOiJNaWNyb3NvZnRDb3JwQWFkIiwiSXNzdWVyTG9jYXRpb24iOiJUcmlhbCIsIm5iZiI6MTczMTQ5NzU0NywiZXhwIjoxNzMxNTAxNDQ3LCJpc3MiOiJodHRwczovL2FwaS52aWRlb2luZGV4ZXIuYWkvIiwiYXVkIjoiaHR0cHM6Ly9hcGkudmlkZW9pbmRleGVyLmFpLyJ9.RdpDTEwrVdeOv9hf6XNwftnKoV-VenRixufNHV35Mi4Zc0BMkUqU_TcsBBFK3C_75mSR_-tdYTGX5zguSZfo-0Kpate9cihVR3HemrqpNwcjvSGt8ccjxbLcwtssDSCbzDX8k4tns-SYO38Osa6ENxjYt0uY1bY0NOZsCUMzCEPOGmg_Zelh8PyTGFK3cVLrwUbdm385zY9OsZA-uSEr5uQV7kw2A4TLdHpxIFUyGjirLoL--h0RXfLP-It8vco_AtlcQnR-gv4x527yYPQc-2gTX7tlVPYfyN_3MxXwxEiw5KKgemvn6dOgs4PCElgcNo-8FcTC7HT_wkZjuMRb2A&locale=en&location=trial" frameborder="0" allowfullscreen></iframe>
+                   
+                </td>
+            </tr>
+        </table>
+        </div>
+      </tbody>
+    </table>
+</div>
+{% endblock todo %}
+    
+    
+
+
+
+    

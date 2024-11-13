@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block todo %}
+<div class="land" style="display: flex;flex-direction: column; height: 90vh; background: transparent url('/static/landing_page.jpg') no-repeat center;background-size: cover;align-items: center;
+justify-content: center;">
+    <div class="h1 text-center p-4" style="background-color: #e9ebed91;min-height: 100px;display: flex;align-items: center;">
+        Each day I will accomplish one thing on my to do list.
+    </div>
+    
+        <a href="/home" type="button" class="p-2 rounded-3 text-white text-decoration-none bg-primary bg-gradient">Go to TO DO</a>
+    
+        <!-- <a href="/login" type="button" class="p-2 rounded-3 text-white text-decoration-none bg-primary bg-gradient"> Login to Proceed !</a> -->
+    
+</div>
+
+{% endblock todo %}
+    
